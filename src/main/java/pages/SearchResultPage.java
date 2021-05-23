@@ -3,8 +3,11 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SearchResultPage {
     private WebDriver driver;
@@ -20,7 +23,7 @@ public class SearchResultPage {
     }
 
     public List<WebElement> getSearchResults() {
-        searchResults = driver.findElements(By.xpath("//ul[@id='goods-table']//li"));
+        searchResults = driver.findElements(By.xpath("//*[@id='goods-table']//li"));
         return searchResults;
     }
 }
