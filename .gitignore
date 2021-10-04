@@ -4,4 +4,4 @@
 *.iws
 log/
 target/
-.allure/*
+.allure*
