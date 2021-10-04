@@ -1,6 +1,7 @@
-# Project exclude paths
+# Default ignored files
 .idea/*
 *.iml
 *.iws
 log/
 target/
+.allure/*
