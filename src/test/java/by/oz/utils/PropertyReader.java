@@ -7,7 +7,6 @@ import java.util.Properties;
 
 @Log4j2
 public class PropertyReader {
-
     private final Properties properties = new Properties();
 
     public PropertyReader(String filepath) {
