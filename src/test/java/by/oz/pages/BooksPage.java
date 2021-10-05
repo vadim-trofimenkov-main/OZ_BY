@@ -1,27 +1,27 @@
 package by.oz.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
-public class BooksPage {
-    private WebDriver driver;
-    private List<WebElement> booksResults;
+public class BooksPage extends BasePage{
+    private List booksResults;
     private WebElement element;
 
-    public BooksPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public SearchResultPage clickLink(String linkText) {
-        driver.findElement(By.linkText(linkText)).click();
-        return new SearchResultPage(driver);
+        $(By.linkText(linkText)).click();
+        return new SearchResultPage();
     }
 
-    public List<WebElement> getBooksResults() {
-        booksResults = driver.findElements(By.xpath("//*[@id='goods-table']//li"));
+    public List getBooksResults() {
+        booksResults = $$(By.xpath("//*[@id='goods-table']//li"));
         return booksResults;
+    }
+
+    @Override
+    public boolean isPageOpened() {
+        return false;
     }
 }
