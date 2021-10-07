@@ -3,29 +3,32 @@ package by.oz.tests;
 import by.oz.pages.HomePage;
 import by.oz.utils.PropertyReader;
 import com.codeborne.selenide.Configuration;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class BaseTest {
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected HomePage homePage;
-    protected String username = propertyReader.getPropertyValueByKey("username");
-    protected String password = propertyReader.getPropertyValueByKey("password");
+    protected String username, password;
 
     @BeforeClass
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
+        Configuration.baseUrl = propertyReader.getProperty("OZ_BASE_URL", "oz_base_url");
+        username = propertyReader.getProperty("OZ_USERNAME","oz_username");
+        password = propertyReader.getProperty("OZ_PASSWORD", "oz_password");
+        Configuration.browser = "chrome";
+        Configuration.clickViaJs = true;
         Configuration.startMaximized = true;
         Configuration.headless = false;
-        //Configuration.browser = "Chrome";
+        Configuration.pollingInterval = 500;
+        Configuration.timeout = 10000;
         homePage = new HomePage();
     }
 
-    //    private void setCookie() {
-//        Cookie cookie = new Cookie
-//                .Builder("vadimtrofimenkov97@gmail.com", " Pi34Ag")
-//                .domain(link)
-//                .build();
-//        driver.manage().addCookie(cookie);
-//    }
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+        if (getWebDriver() != null) getWebDriver().quit();
+    }
 }

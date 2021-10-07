@@ -1,6 +1,7 @@
 package by.oz.utils;
 
 import lombok.extern.log4j.Log4j2;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -19,12 +20,16 @@ public class PropertyReader {
 
     }
 
-    public String getPropertyValueByKey(String key) {
-        if (properties.getProperty(key) != null) {
-            return properties.getProperty(key);
+    public String getProperty(String propertyName) {
+        if (properties.getProperty(propertyName) != null) {
+            return properties.getProperty(propertyName);
         } else {
-            log.error("Cannot find properly by key: {}", key);
+            log.error("Cannot find properly by key: {}", propertyName);
             throw new RuntimeException();
         }
+    }
+
+    public String getProperty(String envVariable, String propertyName) {
+        return System.getenv().getOrDefault(envVariable, getProperty(propertyName));
     }
 }
