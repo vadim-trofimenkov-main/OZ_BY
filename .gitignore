@@ -5,5 +5,5 @@
 log/
 target/
 allure-results/
-reports/
-configuration.properties
+build/
+src/test/resources/configuration.properties
