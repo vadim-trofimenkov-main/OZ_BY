@@ -1,14 +1,13 @@
-package by.oz.tests;
+package by.oz.steps;
 
 import by.oz.pages.HomePage;
 import by.oz.utils.PropertyReader;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class BaseTest {
+public class BaseStep {
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected HomePage homePage;
     protected String username, password;
