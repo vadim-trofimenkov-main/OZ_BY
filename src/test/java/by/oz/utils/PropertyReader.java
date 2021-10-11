@@ -32,4 +32,8 @@ public class PropertyReader {
     public String getProperty(String envVariable, String propertyName) {
         return System.getenv().getOrDefault(envVariable, getProperty(propertyName));
     }
+
+    public void setProperty(String propertyName, String value) {
+        properties.setProperty(propertyName, value);
+    }
 }

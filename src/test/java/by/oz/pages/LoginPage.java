@@ -36,7 +36,7 @@ public class LoginPage extends BasePage {
         return new HomePage();
     }
 
-    public HomePage logIn() {
+    public HomePage logIn(String username, String password) {
         LoginPage loginPage = new LoginPage();
         return homePage =
                 loginPage

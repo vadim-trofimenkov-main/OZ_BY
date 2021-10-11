@@ -1,18 +1,13 @@
 package by.oz.tests;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
 
-public class LoginTest extends BaseTest {
-
-    @Test
-    public void testLogin() {
-        boolean isUserLogged =
-                homePage
-                        .openPage()
-                        .clickLoginButton()
-                        .logIn()
-                        .getLoggedUserElement();
-        Assert.assertTrue(isUserLogged, "User is not logged");
-    }
+@CucumberOptions(
+        features = {"classpath:features/login.feature"},
+        glue = "by/oz/steps",
+        plugin = {"pretty", "html:target/cucumber.html",
+                "json:target/cucumber.json"}
+)
+public class LoginTest extends AbstractTestNGCucumberTests {
 }

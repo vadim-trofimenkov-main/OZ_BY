@@ -1,7 +1,6 @@
 package by.oz.pages;
 
 import org.openqa.selenium.By;
-import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -41,7 +40,7 @@ public class HomePage extends BasePage {
     }
 
     public boolean getLoggedUserElement() {
-        return $(loggedUserElement).should(exist).exists();
+        return $(loggedUserElement).shouldBe(visible).exists();
     }
 
     public SearchResultPage searchThroughSearchBox(String text) {
