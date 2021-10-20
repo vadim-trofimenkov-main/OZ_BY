@@ -6,4 +6,4 @@ log/
 target/
 allure-results/
 build/
-src/test/resources/configuration.properties
+.allure

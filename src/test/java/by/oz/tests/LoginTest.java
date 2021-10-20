@@ -1,6 +1,5 @@
 package by.oz.tests;
 
-import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
@@ -9,5 +8,5 @@ import io.cucumber.testng.CucumberOptions;
         plugin = {"pretty", "html:target/cucumber.html",
                 "json:target/cucumber.json"}
 )
-public class LoginTest extends AbstractTestNGCucumberTests {
-}
+
+public class LoginTest extends BaseTest {}

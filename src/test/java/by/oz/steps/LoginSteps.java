@@ -1,11 +1,9 @@
 package by.oz.steps;
 
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class LoginSteps extends BaseStep {
     private String username, password;
@@ -23,19 +21,14 @@ public class LoginSteps extends BaseStep {
 
     @When("User does login.")
     public void login() {
-                homePage
-                        .openPage()
-                        .clickLoginButton()
-                        .logIn(username, password);
+        homePage
+                .openPage()
+                .clickLoginButton()
+                .logIn(username, password);
     }
 
     @Then("User is logged. Home page is opened.")
     public void isUserLogged() {
-        homePage.getLoggedUserElement();
-    }
-
-    @After()
-    public void tearDown() {
-        if (getWebDriver() != null) getWebDriver().quit();
+        homePage.isUserLogged();
     }
 }

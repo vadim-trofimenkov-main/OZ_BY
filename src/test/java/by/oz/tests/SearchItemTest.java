@@ -1,25 +1,13 @@
-//package by.oz.tests;
-//
-//import by.oz.pages.SearchResultPage;
-//import org.openqa.selenium.WebElement;
-//import org.testng.Assert;
-//import org.testng.annotations.Test;
-//
-//import java.util.List;
-//
-//public class SearchItemTest extends BaseTest {
-//    private WebElement searchItem;
-//    @Test
-//    public void testMainSearch() {
-//        String text = "Тетрадь полуобщая в клетку \"OZ\" (48 листов)";
-//        SearchResultPage searchResultPage = homePage.searchThroughSearchBox(text);
-//        List<WebElement> items = searchResultPage.getSearchResults();
-//        for (WebElement item : items) {
-//            if (item.getText().contains(text)) {
-//                searchItem = item;
-//                break;
-//            }
-//        }
-//        Assert.assertTrue(searchItem.getText().contains(text));
-//    }
-//}
+package by.oz.tests;
+
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+        features = {"classpath:features/search.feature"},
+        glue = "by/oz/steps",
+        plugin = {"pretty", "html:target/cucumber.html",
+                "json:target/cucumber.json"}
+)
+
+public class SearchItemTest extends BaseTest {
+}
