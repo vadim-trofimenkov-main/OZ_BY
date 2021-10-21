@@ -16,6 +16,7 @@ public class BaseStep {
     public void login() {
         if (!homePage.isUserLogged()) {
             homePage
+                    .openPage()
                     .clickLoginButton()
                     .logIn(username, password)
                     .userShouldBeLogged();
