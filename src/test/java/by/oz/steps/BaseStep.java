@@ -5,6 +5,7 @@ import by.oz.utils.PropertyReader;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
 public class BaseStep {
@@ -32,5 +33,6 @@ public class BaseStep {
         Configuration.pollingInterval = 500;
         Configuration.timeout = 10000;
         homePage = new HomePage();
+        open("/home");
     }
 }
