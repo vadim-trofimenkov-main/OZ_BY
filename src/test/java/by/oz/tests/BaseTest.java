@@ -6,6 +6,7 @@ import com.codeborne.selenide.Configuration;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.*;
+
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -16,7 +17,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
     protected String username, password;
 
     @BeforeTest
-    public void setUp(){
+    public void setUp() {
         Configuration.baseUrl = propertyReader.getProperty("OZ_BASE_URL", "oz_base_url");
         username = propertyReader.getProperty("OZ_USERNAME", "oz_username");
         password = propertyReader.getProperty("OZ_PASSWORD", "oz_password");
@@ -26,12 +27,11 @@ public class BaseTest extends AbstractTestNGCucumberTests {
         Configuration.headless = false;
         Configuration.pollingInterval = 500;
         Configuration.timeout = 10000;
-        open("/home");
     }
 
     @AfterTest(alwaysRun = true)
     public void tearDown() {
-        if (getWebDriver() != null) getWebDriver().quit();
+        getWebDriver().quit();
     }
 }
 

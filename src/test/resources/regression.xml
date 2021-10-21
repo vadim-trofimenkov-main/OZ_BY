@@ -6,9 +6,10 @@
             <class name="by.oz.tests.LoginTest"/>
         </classes>
     </test> <!-- Test -->
-    <test name="Search Item through search bar">
+    <test name="Search Item through search bar; Basket test">
         <classes>
             <class name="by.oz.tests.SearchItemTest"/>
+            <class name="by.oz.tests.BasketTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
