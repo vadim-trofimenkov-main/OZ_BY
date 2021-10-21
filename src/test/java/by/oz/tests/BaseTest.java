@@ -6,7 +6,6 @@ import com.codeborne.selenide.Configuration;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.*;
-
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -27,6 +26,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
         Configuration.headless = false;
         Configuration.pollingInterval = 500;
         Configuration.timeout = 10000;
+        open("/home");
     }
 
     @AfterTest(alwaysRun = true)

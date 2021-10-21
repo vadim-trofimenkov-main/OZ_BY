@@ -14,14 +14,15 @@ public class BaseStep {
 
     @Step("Login as {username} user")
     public void login() {
-        homePage
-                .openPage()
-                .clickLoginButton()
-                .logIn(username, password)
-                .isUserLogged();
+        if (!homePage.isUserLogged()) {
+            homePage
+                    .clickLoginButton()
+                    .logIn(username, password)
+                    .userShouldBeLogged();
+        }
     }
 
-    public void setUp(){
+    public void setUp() {
         Configuration.baseUrl = propertyReader.getProperty("OZ_BASE_URL", "oz_base_url");
         username = propertyReader.getProperty("OZ_USERNAME", "oz_username");
         password = propertyReader.getProperty("OZ_PASSWORD", "oz_password");

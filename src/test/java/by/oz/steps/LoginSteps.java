@@ -28,7 +28,7 @@ public class LoginSteps extends BaseStep {
     }
 
     @Then("User is logged. Home page is opened.")
-    public void isUserLogged() {
-        homePage.isUserLogged();
+    public void userShouldBeLogged() {
+        homePage.userShouldBeLogged();
     }
 }

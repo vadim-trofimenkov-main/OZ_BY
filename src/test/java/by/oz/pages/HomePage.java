@@ -44,8 +44,13 @@ public class HomePage extends BasePage {
     }
 
     @Step("Check whether user is logged")
-    public boolean isUserLogged() {
+    public boolean userShouldBeLogged() {
         return $(loggedUserElement).shouldBe(visible).exists();
+    }
+
+    @Step("Check whether user is logged")
+    public boolean isUserLogged() {
+        return $(loggedUserElement).exists();
     }
 
     @Step("Click favourites link")
