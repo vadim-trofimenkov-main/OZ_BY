@@ -6,6 +6,8 @@ import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
+import static com.codeborne.selenide.Selenide.open;
+
 @Log4j2
 public class BaseStep {
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
