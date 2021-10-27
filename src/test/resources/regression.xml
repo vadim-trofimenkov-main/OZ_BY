@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" name="Regression test suite" parallel="tests">
-    <test name="Login">
+    <test name="Login and Search Item through search bar">
         <classes>
             <class name="by.oz.tests.LoginTest"/>
+            <class name="by.oz.tests.SearchItemTest"/>
         </classes>
     </test> <!-- Test -->
-    <test name="Search Item through search bar; Basket test">
+    <test name="Basket test and Favourites test">
         <classes>
-            <class name="by.oz.tests.SearchItemTest"/>
             <class name="by.oz.tests.BasketTest"/>
+            <class name="by.oz.tests.FavouritesTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

@@ -4,7 +4,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$$;
@@ -17,13 +16,13 @@ public class SearchResultPage extends BasePage {
 
     @Step("Select item {element.getText()} from Search results")
     public ItemPage clickElement(SelenideElement element) {
-        element.click();
+        element.shouldBe(visible).click();
         return new ItemPage();
     }
 
     @Step("Getting search results")
     public ElementsCollection getSearchResults() {
-        isPageOpened();
+        if (!isPageOpened()) throw new RuntimeException("Search page is not opened");
         searchResults = $$("#goods-table li");
         return searchResults;
     }

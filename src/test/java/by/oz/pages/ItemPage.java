@@ -1,64 +1,63 @@
 package by.oz.pages;
 
-import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class ItemPage {
+public class ItemPage extends BasePage{
     private String addToBasketButton = ".addtocart-btn";
-    private String basketLink = ".top-panel__userbar__cart__item";
-//    private By header = By.xpath("//h1");
-//    private By addToFavouritesButton = By.xpath("//*[@id='top-page']/div[3]/div/div[1]/div/div[1]/div/div[2]/div");
-//    private By favouritesLink = By.xpath("//a [@class='top-panel__userbar__favs top-panel__userbar__dlink top-panel__userbar__dlink--slink']");
-//    private By leaveCommentButton = By.className("b-comment-new__state-btn");
-//    private By leaveCommentTextArea = By.xpath("//*[@id='rvc-title-h2']/div[2]/div[3]/div[4]/div[1]/div/div[3]/form/div[2]/div/label");
-//    private By leaveCommentConfirmButton = By.xpath("//*[@id='rvc-title-h2']/div[2]/div[3]/div[4]/div[1]/div/div[3]/form/div[2]/footer/ul/li/button");
-//    private ElementsCollection reviews;
+    private String addToFavouritesButton = ".b-product-action__label_fav-action";
+    private String leaveCommentButton = ".b-comment-new__state-btn";
+    private String leaveCommentTextArea = ".b-comment-new__textarea_main";
+    private By leaveCommentConfirmButton = By.xpath("//span[contains(text(), 'Задать вопрос')]");
+    private ElementsCollection comments;
 
-//    public void clickAddToFavouritesButton() {
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        WebElement element = (new WebDriverWait(driver, 10)).
-//                until(ExpectedConditions.presenceOfElementLocated(addToFavouritesButton));
-//        driver.findElement(addToFavouritesButton).click();
-//    }
-//
-//    public FavouritesPage clickFavouritesLink() {
-//        driver.findElement(favouritesLink).click();
-//        return new FavouritesPage(driver);
-//    }
-    public BasketPage clickBasketLink() {
-        $(basketLink).click();
-        return new BasketPage();
+    public ItemPage clickAddToFavouritesButton() {
+        $(addToFavouritesButton).shouldBe(visible).click();
+        return this;
     }
 
-    public void clickAddToBasketButton(){
-        $(addToBasketButton).click();
+    public ItemPage clickAddToBasketButton() {
+        $(addToBasketButton).shouldHave(text("Положить в корзину")).click();
         $(".second-button").shouldHave(text("Уже в корзине"));
+        return this;
     }
 
-//    public void clickLeaveCommentButton(){
-//        $(leaveCommentButton).click();
-//    }
-//    public void clickLeaveCommentConfirmButton(){
-//        $(leaveCommentConfirmButton).click();
-//    }
-//
-//    public void leaveCommentInTextArea(String text){
-//        $(leaveCommentTextArea).sendKeys(text);
-//    }
-//
-//    public ElementsCollection getReviews() {
-//        reviews = $$(By.xpath("//div[@itemprop='com.company.project.tests.review']"));
-//        return reviews;
-//    }
-//
-//    public void leaveComment(String text){
-//        clickLeaveCommentButton();
-//        leaveCommentInTextArea(text);
-//        clickLeaveCommentConfirmButton();
-//    }
+    public ItemPage clickLeaveCommentButton() {
+        $(leaveCommentButton).shouldBe(visible).click();
+        return this;
+    }
+
+    public ItemPage clickLeaveCommentConfirmButton() {
+        $(leaveCommentConfirmButton).shouldHave(text("Задать вопрос")).click();
+        return this;
+    }
+
+    public ItemPage leaveCommentInTextArea(String text) {
+        $(leaveCommentTextArea).shouldBe(visible).setValue(text);
+        return this;
+    }
+
+    public ElementsCollection getComments() {
+        return $$("[itemprop='review']");
+    }
+
+    public void commentShouldBeDisplayed(String comment){
+        comments = getComments().should(CollectionCondition.containExactTextsCaseSensitive(comment));
+    }
+
+    public void leaveComment(String text) {
+        clickLeaveCommentButton()
+                .leaveCommentInTextArea(text)
+                .clickLeaveCommentConfirmButton();
+    }
+
+    @Override
+    public boolean isPageOpened() {
+        return false;
+    }
 }
