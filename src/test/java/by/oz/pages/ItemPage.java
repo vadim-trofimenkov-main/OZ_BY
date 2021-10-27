@@ -8,11 +8,11 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class ItemPage extends BasePage{
+public class ItemPage extends BasePage {
     private String addToBasketButton = ".addtocart-btn";
     private String addToFavouritesButton = ".b-product-action__label_fav-action";
     private String leaveCommentButton = ".b-comment-new__state-btn";
-    private String leaveCommentTextArea = ".b-comment-new__textarea_main";
+    private String leaveCommentTextArea = ".b-comment-new__text-container [name='message']";
     private By leaveCommentConfirmButton = By.xpath("//span[contains(text(), 'Задать вопрос')]");
     private ElementsCollection comments;
 
@@ -38,7 +38,7 @@ public class ItemPage extends BasePage{
     }
 
     public ItemPage leaveCommentInTextArea(String text) {
-        $(leaveCommentTextArea).shouldBe(visible).setValue(text);
+        $(leaveCommentTextArea).val(text);
         return this;
     }
 
@@ -46,8 +46,9 @@ public class ItemPage extends BasePage{
         return $$("[itemprop='review']");
     }
 
-    public void commentShouldBeDisplayed(String comment){
-        comments = getComments().should(CollectionCondition.containExactTextsCaseSensitive(comment));
+    public void commentShouldBeDisplayed(String comment) {
+        comments = getComments();
+        comments.findBy(text(comment)).shouldHave(text(comment));
     }
 
     public void leaveComment(String text) {
