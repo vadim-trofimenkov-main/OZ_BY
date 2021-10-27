@@ -16,7 +16,7 @@ public class SearchResultPage extends BasePage {
 
     @Step("Select item {element.getText()} from Search results")
     public ItemPage clickElement(SelenideElement element) {
-        element.shouldBe(visible).click();
+        element.click();
         return new ItemPage();
     }
 

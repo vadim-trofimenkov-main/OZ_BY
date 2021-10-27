@@ -24,9 +24,9 @@ public class FavouritesPage extends BasePage {
     public void removeItemFromFavourites(String text) {
         item = getElementFromFavouritesByText(text);
         if (isItemInFavorites(text)) {
-            item.shouldBe(visible).click();
-            item.hover().find(".i-icon-2_delete").shouldBe(visible).click();
-            item.hover().find(".item-type-card__controls-button").shouldBe(visible).shouldHave(text("Да, удалить")).click();
+            item.click();
+            item.hover().find(".i-icon-2_delete").click();
+            item.hover().find(".item-type-card__controls-button").shouldHave(text("Да, удалить")).click();
         } else throw new RuntimeException("Item is not in the basket");
     }
 

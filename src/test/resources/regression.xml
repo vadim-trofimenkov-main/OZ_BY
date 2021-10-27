@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="Regression test suite" parallel="tests">
+<suite thread-count="3" name="Regression test suite" parallel="tests">
     <test name="Login and Search Item through search bar">
         <classes>
             <class name="by.oz.tests.LoginTest"/>
@@ -11,6 +11,12 @@
         <classes>
             <class name="by.oz.tests.BasketTest"/>
             <class name="by.oz.tests.FavouritesTest"/>
+            <class name="by.oz.tests.LeaveCommentTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Leave Comment test">
+        <classes>
+            <class name="by.oz.tests.LeaveCommentTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

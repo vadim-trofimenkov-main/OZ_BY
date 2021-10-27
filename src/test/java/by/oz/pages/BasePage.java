@@ -5,8 +5,8 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+
 import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
@@ -17,7 +17,6 @@ public abstract class BasePage {
     private String searchBox = "#top-s";
     protected HomePage homePage;
     protected LoginPage loginPage;
-    protected SearchResultPage searchResultPage;
 
     public abstract boolean isPageOpened();
 
@@ -31,12 +30,12 @@ public abstract class BasePage {
     }
 
     public FavouritesPage clickFavouritesLink() {
-        $(favouritesLink).shouldBe(visible).click();
+        $(favouritesLink).hover().click();
         return new FavouritesPage();
     }
 
     public BasketPage clickBasketLink() {
-        $(basketLink).shouldBe(visible).click();
+        $(basketLink).hover().click();
         return new BasketPage();
     }
 

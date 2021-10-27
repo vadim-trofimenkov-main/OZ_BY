@@ -36,8 +36,8 @@ public class BasketPage extends BasePage{
         element = $(By.xpath(String.format(itemLocator,text))).shouldBe(visible);
         if (basketResults.contains(element)) {
             $(By.xpath(String.format(checkbox, text))).shouldNotBe(checked).click();
-            $(deleteButton).shouldBe(visible).click();
-            $(deleteButtonConfirm).shouldBe(visible).click();
+            $(deleteButton).click();
+            $(deleteButtonConfirm).click();
         } else throw new RuntimeException("Item is not in the basket");
     }
 

@@ -25,13 +25,13 @@ public class LeaveCommentSteps extends BaseStep {
     }
 
     @When("User add {string} comment to the item.")
-    public void addItemToBasket(String text) {
+    public void userCommentItem(String text) {
         comment = text;
         itemPage.leaveComment(comment);
     }
 
     @Then("User can see the comment in Comments section.")
-    public void isItemInBasket() {
+    public void commentShouldBeDisplayed() {
         itemPage.commentShouldBeDisplayed(comment);
     }
 }

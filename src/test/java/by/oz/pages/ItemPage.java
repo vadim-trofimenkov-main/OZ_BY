@@ -17,7 +17,7 @@ public class ItemPage extends BasePage {
     private ElementsCollection comments;
 
     public ItemPage clickAddToFavouritesButton() {
-        $(addToFavouritesButton).shouldBe(visible).click();
+        $(addToFavouritesButton).click();
         return this;
     }
 
@@ -28,7 +28,7 @@ public class ItemPage extends BasePage {
     }
 
     public ItemPage clickLeaveCommentButton() {
-        $(leaveCommentButton).shouldBe(visible).click();
+        $(leaveCommentButton).click();
         return this;
     }
 
