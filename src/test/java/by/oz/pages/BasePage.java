@@ -3,10 +3,10 @@ package by.oz.pages;
 import by.oz.utils.PropertyReader;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
 import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
@@ -20,20 +20,22 @@ public abstract class BasePage {
 
     public abstract boolean isPageOpened();
 
-    public boolean isExist(By locator) {
+    public boolean isExist(String locator) {
         try {
-            return $(locator).should(exist).exists();
+            return $(locator).shouldBe(visible).exists();
         } catch (NoSuchElementException exception) {
             exception.printStackTrace();
             return false;
         }
     }
 
+    @Step("Open Favourites Page")
     public FavouritesPage clickFavouritesLink() {
         $(favouritesLink).hover().click();
         return new FavouritesPage();
     }
 
+    @Step("Open Basket Page")
     public BasketPage clickBasketLink() {
         $(basketLink).hover().click();
         return new BasketPage();

@@ -1,13 +1,14 @@
 package by.oz.pages;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
+@Log4j2
 public class ItemPage extends BasePage {
     private String addToBasketButton = ".addtocart-btn";
     private String addToFavouritesButton = ".b-product-action__label_fav-action";
@@ -16,16 +17,19 @@ public class ItemPage extends BasePage {
     private By leaveCommentConfirmButton = By.xpath("//span[contains(text(), 'Задать вопрос')]");
     private ElementsCollection comments;
 
+    @Step("Click add to favourites button")
     public ItemPage clickAddToFavouritesButton() {
         $(addToFavouritesButton).click();
         return this;
     }
 
+    @Step("Click add to basket button")
     public ItemPage clickAddToBasketButton() {
         $(addToBasketButton).shouldHave(text("Положить в корзину")).click();
         $(".second-button").shouldHave(text("Уже в корзине"));
         return this;
     }
+
 
     public ItemPage clickLeaveCommentButton() {
         $(leaveCommentButton).click();
@@ -46,11 +50,13 @@ public class ItemPage extends BasePage {
         return $$("[itemprop='review']");
     }
 
+    @Step("{comment} comment should be displayed")
     public void commentShouldBeDisplayed(String comment) {
         comments = getComments();
         comments.findBy(text(comment)).shouldHave(text(comment));
     }
 
+    @Step("Leave comment {text}")
     public void leaveComment(String text) {
         clickLeaveCommentButton()
                 .leaveCommentInTextArea(text)

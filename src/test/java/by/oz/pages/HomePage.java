@@ -1,16 +1,17 @@
 package by.oz.pages;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
+import lombok.extern.log4j.Log4j2;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+@Log4j2
 public class HomePage extends BasePage {
     private String loginButton = ".top-panel__userbar__auth__lbl";
     private String loginPopupElement = "#loginFormLoginEmailLink";
     private String loggedUserElement = ".top-panel__userbar__user--men";
-    private By homePageTitle = By.cssSelector("a[title='Интернет-магазин OZ.by']");
+    private String homePageTitle = "a[title='Интернет-магазин OZ.by']";
 
     @Step("Check Home page is opened")
     @Override
@@ -18,7 +19,7 @@ public class HomePage extends BasePage {
         return isExist(homePageTitle);
     }
 
-    @Step("Open Details tab")
+    @Step("Open Home page")
     public HomePage openPage() {
         open("/home");
         homePage = new HomePage();

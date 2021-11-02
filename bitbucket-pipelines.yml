@@ -20,8 +20,7 @@ pipelines:
               # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
             - pipe: atlassian/checkstyle-report:0.2.0
       - step:
-          name: Security Scan
+          name: Allure report
           script:
-            # Run a security scan for sensitive data.
-            # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+            - mvn allure:serve
             - pipe: atlassian/git-secrets-scan:0.4.3

@@ -1,4 +1,4 @@
-Feature: add item to basket
+Feature: Add and remove item to/from basket
   Exact search item names should be used.
 
   Scenario: Add found item to basket

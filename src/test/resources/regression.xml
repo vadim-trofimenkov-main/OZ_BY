@@ -11,7 +11,6 @@
         <classes>
             <class name="by.oz.tests.BasketTest"/>
             <class name="by.oz.tests.FavouritesTest"/>
-            <class name="by.oz.tests.LeaveCommentTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Leave Comment test">

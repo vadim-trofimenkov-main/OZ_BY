@@ -6,10 +6,10 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage {
 
-    private By loginPopupEmail = By.cssSelector("#loginFormLoginEmailLink");
-    private By loginPopupUsername = By.name("cl_email");
-    private By loginPopupPassword = By.name("cl_psw");
-    private By loginPopupButton = By.cssSelector("div.i-popup__tab-container #loginForm > button[type=submit]");
+    private String loginPopupEmail = "#loginFormLoginEmailLink";
+    private String loginPopupUsername = "cl_email";
+    private String loginPopupPassword = "cl_psw";
+    private String loginPopupButton = "div.i-popup__tab-container #loginForm > button[type=submit]";
 
     @Override
     public boolean isPageOpened() {
@@ -22,12 +22,12 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage setUsernameField(String username) {
-        $(loginPopupUsername).val(username);
+        $(By.name(loginPopupUsername)).val(username);
         return this;
     }
 
     public LoginPage setPassword(String password) {
-        $(loginPopupPassword).val(password);
+        $(By.name(loginPopupPassword)).val(password);
         return this;
     }
 

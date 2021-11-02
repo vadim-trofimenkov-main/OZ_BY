@@ -3,7 +3,9 @@ package by.oz.steps;
 import by.oz.pages.HomePage;
 import by.oz.utils.PropertyReader;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Step;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -14,7 +16,7 @@ public class BaseStep {
     protected HomePage homePage;
     protected String username, password;
 
-    @Step("Login as {username} user")
+    @Step("Login")
     public void login() {
         if (!homePage.isUserLogged()) {
             homePage
@@ -29,6 +31,7 @@ public class BaseStep {
         Configuration.baseUrl = propertyReader.getProperty("OZ_BASE_URL", "oz_base_url");
         username = propertyReader.getProperty("OZ_USERNAME", "oz_username");
         password = propertyReader.getProperty("OZ_PASSWORD", "oz_password");
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
         homePage = new HomePage();
     }
 }
