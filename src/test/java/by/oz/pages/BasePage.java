@@ -4,8 +4,6 @@ import by.oz.utils.PropertyReader;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.NoSuchElementException;
-
-import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -41,7 +39,7 @@ public abstract class BasePage {
         return new BasketPage();
     }
 
-    @Step("Search for {text}")
+    @Step("Search for {text} in Search bar")
     public SearchResultPage searchThroughSearchBox(String text) {
         log.info("Searching by text '{}' in search box", text);
         $(searchBox).val(text).pressEnter();

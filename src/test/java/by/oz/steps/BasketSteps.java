@@ -35,7 +35,7 @@ public class BasketSteps extends BaseStep {
     public void isItemInBasket() {
         itemPage
                 .clickBasketLink()
-                .isItemInTheBasket(itemText);
+                .itemShouldBeInTheBasket(itemText);
     }
 
     @Given("{string} is in the basket.")
@@ -43,7 +43,7 @@ public class BasketSteps extends BaseStep {
         itemText = text;
         itemPage
                 .clickBasketLink()
-                .isItemInTheBasket(text);
+                .itemShouldBeInTheBasket(text);
     }
 
     @When("Remove found item from basket.")
@@ -55,7 +55,7 @@ public class BasketSteps extends BaseStep {
     public void itemIsNotInTheBasket() {
         itemPage
                 .clickBasketLink()
-                .isItemRemovedFromBasket(itemText);
+                .itemShouldBeRemovedFromBasket(itemText);
     }
 }
 

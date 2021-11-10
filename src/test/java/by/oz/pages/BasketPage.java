@@ -25,23 +25,23 @@ public class BasketPage extends BasePage {
         return basketResults;
     }
 
-    @Step("Check that {text} item is in the Basket")
-    public void isItemInTheBasket(String text) {
+    @Step("Check that '{text}' item is in the Basket")
+    public void itemShouldBeInTheBasket(String text) {
         log.info("Check that {} item is in the Basket", text);
         basketResults = getBasketResults();
         basketResults.findBy(text(text)).should(exist);
     }
 
-    @Step("Check that {text} item is removed from the Basket")
-    public void isItemRemovedFromBasket(String text) {
+    @Step("Check that '{text}' item is removed from the Basket")
+    public void itemShouldBeRemovedFromBasket(String text) {
         log.info("Check that {} item is removed from the Basket", text);
         basketResults = getBasketResults();
         basketResults.findBy(text(text)).shouldNot(exist);
     }
 
-    @Step("Remove {text} item from the Basket")
+    @Step("Remove '{text}' item from the Basket")
     public void removeItemFromBasket(String text) {
-        log.info("Removing {} item from the Basket", text);
+        log.info("Removing '{}' item from the Basket", text);
         if (!isPageOpened()) throw new RuntimeException("Page is not opened");
         basketResults = getBasketResults();
         element = $(By.xpath(String.format(itemLocator, text))).shouldBe(visible);
@@ -52,7 +52,6 @@ public class BasketPage extends BasePage {
         } else throw new RuntimeException("Item is not in the basket");
     }
 
-    @Step("Check whether Basket page is opened")
     @Override
     public boolean isPageOpened() {
         return isExist(confirmOrderButton);

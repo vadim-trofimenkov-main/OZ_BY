@@ -13,7 +13,6 @@ public class HomePage extends BasePage {
     private String loggedUserElement = ".top-panel__userbar__user--men";
     private String homePageTitle = "a[title='Интернет-магазин OZ.by']";
 
-    @Step("Check Home page is opened")
     @Override
     public boolean isPageOpened() {
         return isExist(homePageTitle);
@@ -41,7 +40,6 @@ public class HomePage extends BasePage {
         return $(loggedUserElement).shouldBe(visible).exists();
     }
 
-    @Step("Check whether user is logged")
     public boolean isUserLogged() {
         return $(loggedUserElement).exists();
     }

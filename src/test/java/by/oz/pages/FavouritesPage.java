@@ -25,9 +25,9 @@ public class FavouritesPage extends BasePage {
         return item = $(By.xpath(String.format(itemLocator, text))).shouldBe(visible);
     }
 
-    @Step("Remove {text} item from the Favourites")
+    @Step("Remove '{text}' item from the Favourites")
     public void removeItemFromFavourites(String text) {
-        log.info("Removing {} item from the Favourites", text);
+        log.info("Removing '{}' item from the Favourites", text);
         item = getElementFromFavouritesByText(text);
         if (isItemInFavorites(text)) {
             item.click();
@@ -36,28 +36,26 @@ public class FavouritesPage extends BasePage {
         } else throw new RuntimeException("Item is not in the basket");
     }
 
-    @Step("Check that {text} item is in the Favourites")
     public boolean isItemInFavorites(String text) {
-        log.info("Check that {} item is in the Favourites", text);
+        log.info("Check whether '{}' item is in the Favourites", text);
         getElementFromFavouritesByText(text);
         return favouritesResults.contains(item);
     }
 
-    @Step("{text} item should be in the Favourites")
+    @Step("'{text}' item should be in the Favourites")
     public void itemShouldExistInFavorites(String text) {
-        log.info("Check that {} item should be in the Favourites", text);
+        log.info("Check that '{}' item should be in the Favourites", text);
         favouritesResults = getFavouritesResults();
         favouritesResults.findBy(text(text)).should(exist);
     }
 
-    @Step("{text} item should not be in the Favourites")
+    @Step("'{text}' item should not be in the Favourites")
     public void itemShouldBeRemovedFromFavorites(String text) {
-        log.info("Check that {} item should not be in the Favourites", text);
+        log.info("Check that '{}' item should not be in the Favourites", text);
         favouritesResults = getFavouritesResults();
         favouritesResults.findBy(text(text)).shouldNot(exist);
     }
 
-    @Step("Check whether Favourites page is opened")
     @Override
     public boolean isPageOpened() {
         return isExist(favouritesTab);

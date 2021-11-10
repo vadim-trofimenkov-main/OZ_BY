@@ -30,7 +30,6 @@ public class ItemPage extends BasePage {
         return this;
     }
 
-
     public ItemPage clickLeaveCommentButton() {
         $(leaveCommentButton).click();
         return this;
@@ -52,12 +51,14 @@ public class ItemPage extends BasePage {
 
     @Step("{comment} comment should be displayed")
     public void commentShouldBeDisplayed(String comment) {
+        log.info("Check that '{}' comment should be displayed", comment);
         comments = getComments();
         comments.findBy(text(comment)).shouldHave(text(comment));
     }
 
     @Step("Leave comment {text}")
     public void leaveComment(String text) {
+        log.info("Leave '{}' comment", text);
         clickLeaveCommentButton()
                 .leaveCommentInTextArea(text)
                 .clickLeaveCommentConfirmButton();
@@ -65,6 +66,6 @@ public class ItemPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return false;
+        return isExist(addToBasketButton);
     }
 }
