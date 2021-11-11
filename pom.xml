@@ -13,15 +13,22 @@
         <maven.compiler.target>11</maven.compiler.target>
         <selenide.version>5.25.0</selenide.version>
         <testng.version>7.4.0</testng.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <cucumber.version>4.7.1</cucumber.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <allure-testng.version>2.16.0</allure-testng.version>
+        <allure-selenide.version>2.16.0</allure-selenide.version>
+        <aspectj.version>1.9.6</aspectj.version>
         <log4j-core.version>2.14.1</log4j-core.version>
         <lombok.version>1.18.20</lombok.version>
-        <allure-testng.version>2.13.9</allure-testng.version>
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <allure-maven.version>2.10.0</allure-maven.version>
-        <cucumber.version>4.7.1</cucumber.version>
-        <aspectj.version>1.9.6</aspectj.version>
     </properties>
     <dependencies>
+            <dependency>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-selenide</artifactId>
+                <version>${allure-selenide.version}</version>
+                <scope>test</scope>
+            </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>

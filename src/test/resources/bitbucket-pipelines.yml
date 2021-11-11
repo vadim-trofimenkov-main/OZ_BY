@@ -1,0 +1,18 @@
+image: maven:3.6.3
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Build and Test
+          caches:
+            - maven
+          script:
+            - mvn clean test -Dselenide.headless=true
+          after-script:
+            - pipe: atlassian/checkstyle-report:0.2.0
+      - step:
+          name: Allure report
+          script:
+            - mvn allure:serve
+            - pipe: atlassian/git-secrets-scan:0.4.3

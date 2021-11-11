@@ -7,7 +7,6 @@ import com.codeborne.selenide.Configuration;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.*;
-
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -26,7 +25,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
         Configuration.browser = "chrome";
         Configuration.clickViaJs = true;
         Configuration.startMaximized = true;
-        Configuration.headless = false;
+        Configuration.headless = true;
         Configuration.pollingInterval = 500;
         Configuration.timeout = 10000;
         Configuration.screenshots = true;

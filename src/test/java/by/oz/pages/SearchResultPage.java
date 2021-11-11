@@ -46,7 +46,7 @@ public class SearchResultPage extends BasePage {
 
     @Step("Search Item: {searchText} is found")
     public void isItemFound(SelenideElement item, String searchText) {
-        item.shouldHave(text(searchText));
+        item.shouldNotHave(text(searchText)); // shouldHave
     }
 
     @Override

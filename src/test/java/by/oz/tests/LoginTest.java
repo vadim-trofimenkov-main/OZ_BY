@@ -6,7 +6,9 @@ import io.cucumber.testng.CucumberOptions;
         features = {"classpath:features/login.feature"},
         glue = "by/oz/steps",
         plugin = {"pretty", "html:target/cucumber.html",
-                "json:target/cucumber.json"}
+                "json:target/cucumber.json,",
+                "rerun:target/rerun.txt"}
 )
 
-public class LoginTest extends BaseTest {}
+public class LoginTest extends BaseTest {
+}
