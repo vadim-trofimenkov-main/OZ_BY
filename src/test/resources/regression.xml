@@ -7,15 +7,15 @@
             <class name="by.oz.tests.SearchItemTest"/>
         </classes>
     </test> <!-- Test -->
-<!--    <test name="Basket test and Favourites test">-->
-<!--        <classes>-->
-<!--            <class name="by.oz.tests.BasketTest"/>-->
-<!--            <class name="by.oz.tests.FavouritesTest"/>-->
-<!--        </classes>-->
-<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
-<!--    <test name="Leave Comment test">-->
-<!--        <classes>-->
-<!--            <class name="by.oz.tests.LeaveCommentTest"/>-->
-<!--        </classes>-->
-<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+    <test name="Basket test and Favourites test">
+        <classes>
+            <class name="by.oz.tests.BasketTest"/>
+            <class name="by.oz.tests.FavouritesTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Leave Comment test">
+        <classes>
+            <class name="by.oz.tests.LeaveCommentTest"/>
+        </classes>
+    </test> <!-- Test -->
 </suite>
