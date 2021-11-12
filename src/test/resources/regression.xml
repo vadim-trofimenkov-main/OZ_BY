@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="3" name="Regression test suite" parallel="tests">
+    <listeners>
+        <listener class-name="by.oz.configurations.AnnotationTransformer"/>
+    </listeners>
     <test name="Login and Search Item through search bar">
         <classes>
             <class name="by.oz.tests.LoginTest"/>

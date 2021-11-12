@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Log4j2
-@Listeners(TestListener.class)
+@Listeners({TestListener.class})
 public class BaseTest extends AbstractTestNGCucumberTests {
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected HomePage homePage;
