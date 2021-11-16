@@ -11,27 +11,27 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        log.info("-------------------- STARTING TEST {} -----------------------", iTestResult.getName());
+        log.info("-------------------- STARTING TEST {} -----------------------", iTestResult.getTestClass().getName());
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         //TODO Api request to set passed status of test case
-        log.info("-------------- FINISHED TEST {} Duration: {} ----------------", iTestResult.getName(),
+        log.info("-------------- FINISHED TEST {} Duration: {} ----------------", iTestResult.getTestClass().getName(),
                 getExecutionTime(iTestResult));
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         //TODO Api request to set failed status of test case
-        log.info("-------------- FAILED TEST {} Duration: {} ----------------", iTestResult.getName(),
+        log.info("-------------- FAILED TEST {} Duration: {} ----------------", iTestResult.getTestClass().getName(),
                 getExecutionTime(iTestResult));
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
         //TODO Api request to set skipped status of test case
-        log.info("--------- SKIPPING TEST {} ---------", iTestResult.getName());
+        log.info("--------- SKIPPING TEST {} ---------", iTestResult.getTestClass().getName());
     }
 
     @Override
