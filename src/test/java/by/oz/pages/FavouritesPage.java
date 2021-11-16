@@ -4,15 +4,11 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 @Log4j2
 public class FavouritesPage extends BasePage {
-    private String itemLocator = "//*[contains(text(), '%s')]//ancestor::li";
-    private String favouritesTab = "#user-tab-wishlist";
     private ElementsCollection favouritesResults;
     private SelenideElement item;
 
@@ -21,8 +17,7 @@ public class FavouritesPage extends BasePage {
     }
 
     public SelenideElement getElementFromFavouritesByText(String text) {
-        favouritesResults = getFavouritesResults();
-        return item = $(By.xpath(String.format(itemLocator, text))).shouldBe(visible);
+        return  getFavouritesResults().findBy(text(text));
     }
 
     @Step("Remove '{text}' item from the Favourites")
@@ -38,6 +33,7 @@ public class FavouritesPage extends BasePage {
 
     public boolean isItemInFavorites(String text) {
         log.info("Check whether '{}' item is in the Favourites", text);
+        favouritesResults = getFavouritesResults();
         getElementFromFavouritesByText(text);
         return favouritesResults.contains(item);
     }
@@ -45,19 +41,17 @@ public class FavouritesPage extends BasePage {
     @Step("'{text}' item should be in the Favourites")
     public void itemShouldExistInFavorites(String text) {
         log.info("Check that '{}' item should be in the Favourites", text);
-        favouritesResults = getFavouritesResults();
-        favouritesResults.findBy(text(text)).should(exist);
+        item = getElementFromFavouritesByText(text).should(exist);
     }
 
     @Step("'{text}' item should not be in the Favourites")
     public void itemShouldBeRemovedFromFavorites(String text) {
         log.info("Check that '{}' item should not be in the Favourites", text);
-        favouritesResults = getFavouritesResults();
-        favouritesResults.findBy(text(text)).shouldNot(exist);
+        item = getElementFromFavouritesByText(text).should(exist);
     }
 
     @Override
     public boolean isPageOpened() {
-        return isExist(favouritesTab);
+        return isExist("#user-tab-wishlist");
     }
 }

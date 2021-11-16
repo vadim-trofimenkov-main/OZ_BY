@@ -1,7 +1,8 @@
 Feature: leave comment
-  Exact search item names should be used.
+  Leave comment in review section to any item(ex."Ручка шариковая синяя \"Jotter Royal Blue CT\" (М)")
 
   Scenario: Comment item
-    Given Login as registered user. "Ручка шариковая синяя \"Jotter Royal Blue CT\" (М)" is found.
-    When User add "Всем огромное спасибо!!!" comment to the item.
-    Then User can see the comment in Comments section.
+    Given User is logged in. Home page is opened.
+    And "Ручка шариковая синяя \"Jotter Royal Blue CT\" (М)" is found through search.
+    When User add "Просто супер, очень нравится товар!" comment to the item.
+    Then User can see "Просто супер, очень нравится товар!" comment in Comments section.

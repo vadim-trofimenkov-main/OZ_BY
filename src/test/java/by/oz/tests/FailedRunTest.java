@@ -1,6 +1,5 @@
 package by.oz.tests;
 
-import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
@@ -13,7 +12,7 @@ import org.testng.annotations.DataProvider;
         glue = {"parallel"}
 )
 
-public class FailedRunTest extends AbstractTestNGCucumberTests {
+public class FailedRunTest extends BaseTest {
     @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {

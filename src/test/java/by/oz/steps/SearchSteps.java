@@ -30,7 +30,7 @@ public class SearchSteps extends BaseStep {
                         .getSearchedElementByText(text);
     }
 
-    @Then("Item is found. Item has {string} text.")
+    @Then("{string} is found.")
     public void isItemFound(String text) {
         searchResultPage.isItemFound(searchItem, text);
     }
