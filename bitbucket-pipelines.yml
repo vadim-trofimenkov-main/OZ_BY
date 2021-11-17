@@ -13,7 +13,7 @@ pipelines:
           after-script:
             - pipe: atlassian/checkstyle-report:0.2.0
           artifacts:
-            - ./**/test-results/**/*.xml
+            - ./**/allure-results/**
       - step:
           name: Allure report
           script:
