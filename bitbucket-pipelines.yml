@@ -1,4 +1,4 @@
-image: maven:3.6.3
+image: markhobson/maven-chrome:jdk-11
 
 pipelines:
   default:
@@ -8,11 +8,16 @@ pipelines:
           caches:
             - maven
           script:
+            - echo "Running the automated tests...."
+            - mvn --version
             - mvn clean test -Dselenide.headless=true
           after-script:
             - pipe: atlassian/checkstyle-report:0.2.0
+          artifacts:
+            - target/html-report/**
       - step:
           name: Allure report
           script:
+            - echo "Generating Allure report...."
             - mvn allure:serve
             - pipe: atlassian/git-secrets-scan:0.4.3

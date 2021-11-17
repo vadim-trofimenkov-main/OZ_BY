@@ -26,10 +26,5 @@ public class BaseTest extends AbstractTestNGCucumberTests {
         Configuration.reportsFolder = "target/allure-results";
         open("/");
     }
-
-//    @AfterTest(alwaysRun = true, description = "Close browser")
-//    public void tearDown() {
-//        if (getWebDriver() != null) getWebDriver().quit();
-//    }
 }
 
