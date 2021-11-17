@@ -2,7 +2,6 @@ image: markhobson/maven-chrome:jdk-11
 
 pipelines:
   default:
-    - parallel:
       - step:
           name: Build and Test
           caches:
@@ -14,7 +13,7 @@ pipelines:
           after-script:
             - pipe: atlassian/checkstyle-report:0.2.0
           artifacts:
-            - target/allure-results
+            - ./**/test-results/**/*.xml
       - step:
           name: Allure report
           script:
