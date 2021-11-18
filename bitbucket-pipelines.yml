@@ -9,7 +9,7 @@ pipelines:
           script:
             - echo "Running the automated tests...."
             - mvn --version
-            - mvn clean test -Dselenide.headless=true
+            - mvn clean test
           after-script:
             - pipe: atlassian/checkstyle-report:0.2.0
           artifacts:
