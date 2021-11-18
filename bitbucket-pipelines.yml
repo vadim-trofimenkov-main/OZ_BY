@@ -13,4 +13,4 @@ pipelines:
           - echo "Generating Allure report...."
           - mvn allure:report
         artifacts:
-          - target/html-report/**
+          - ./**/test-results/**/*.xml
