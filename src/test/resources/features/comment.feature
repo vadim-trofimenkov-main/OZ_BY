@@ -4,5 +4,5 @@ Feature: leave comment
   Scenario: Comment item
     Given User is logged in. Home page is opened.
     And "Ручка шариковая синяя \"Jotter Royal Blue CT\" (М)" is found through search.
-    When User add "Невероятно!" comment to the item.
-    Then User can see "Невероятно!" comment in Comments section.
+    When User add "Всем товарам товар!" comment to the item.
+    Then User can see "Всем товарам товар!" comment in Comments section.
