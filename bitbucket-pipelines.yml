@@ -3,13 +3,14 @@ image: markhobson/maven-chrome:jdk-11
 pipelines:
   default:
       - step:
-          name: Build and Test
+          name: Build and Test And Generate Report
           caches:
             - maven
           script:
             - echo "Running the automated tests...."
             - mvn --version
             - mvn clean test
+            - echo "Generating Allure report...."
             - mvn allure:report
-          after-script:
-            - pipe: atlassian/checkstyle-report:0.2.0
+            artifacts:
+                - target/html-report/**
