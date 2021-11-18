@@ -18,5 +18,5 @@ pipelines:
           name: Allure report
           script:
             - echo "Generating Allure report...."
-            - mvn allure:serve
+            - mvn allure:report
             - pipe: atlassian/git-secrets-scan:0.4.3
