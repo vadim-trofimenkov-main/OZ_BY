@@ -13,4 +13,4 @@ pipelines:
           - echo "Generating Allure report...."
           - mvn allure:report
         artifacts:
-          - ./**/test-results/**/*.xml
+          - ./**/opt/atlassian/pipelines/agent/build/target/site/allure-maven-plugin
