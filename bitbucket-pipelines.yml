@@ -10,13 +10,6 @@ pipelines:
             - echo "Running the automated tests...."
             - mvn --version
             - mvn clean test
+            - mvn allure:report
           after-script:
             - pipe: atlassian/checkstyle-report:0.2.0
-          artifacts:
-            - ./**/test-results/**
-      - step:
-          name: Allure report
-          script:
-            - echo "Generating Allure report...."
-            - mvn allure:report
-            - pipe: atlassian/git-secrets-scan:0.4.3
