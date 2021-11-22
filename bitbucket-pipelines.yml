@@ -1,4 +1,4 @@
-image: markhobson/maven-chrome:jdk-11
+image: maven:3.8.2-jdk-11
 
 pipelines:
   default:
@@ -8,12 +8,18 @@ pipelines:
           - maven
         script:
           - echo "Running the automated tests...."
+          - Xvfb :10 -ac &
+          - export DISPLAY=:10
           - mvn --version
-          - export TESTCONTAINERS_RYUK_DISABLED=true
           - mvn clean install
           - echo "Generating Allure report...."
           - mvn allure:report
         services:
-          - docker
+          - chrome
         artifacts:
-          - ./**/test-results/**/*.xml
+          - ./**/test-results/
+
+definitions:
+    services:
+      chrome:
+        image: selenium/standalone-chrome
