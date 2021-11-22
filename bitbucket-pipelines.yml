@@ -8,18 +8,9 @@ pipelines:
           - maven
         script:
           - echo "Running the automated tests...."
-          - Xvfb :10 -ac &
-          - export DISPLAY=:10
           - mvn --version
-          - mvn -B verify
+          - mvn -q test
           - echo "Generating Allure report...."
           - mvn allure:report
-        services:
-          - chrome
         artifacts:
-          - ./**/test-results/
-
-definitions:
-    services:
-      chrome:
-        image: selenium/standalone-chrome
+          - target/html-report/**
