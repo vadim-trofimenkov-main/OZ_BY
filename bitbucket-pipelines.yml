@@ -1,4 +1,4 @@
-image: markhobson/maven-chrome:jdk-11
+image: maven:3.8.2-jdk-11
 
 pipelines:
   default:
@@ -9,8 +9,11 @@ pipelines:
         script:
           - echo "Running the automated tests...."
           - mvn --version
-          - mvn clean test
+          - export TESTCONTAINERS_RYUK_DISABLED=true
+          - mvn clean install
           - echo "Generating Allure report...."
           - mvn allure:report
+        services:
+          - docker
         artifacts:
-          - ./**/opt/atlassian/pipelines/agent/build/target/site/allure-maven-plugin
+          - ./**/opt/atlassian/pipelines/agent/build/target/site/
