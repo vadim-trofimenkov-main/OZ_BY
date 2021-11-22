@@ -1,4 +1,4 @@
-image: maven:3.8.2-jdk-11
+image: markhobson/maven-chrome:jdk-11
 
 pipelines:
   default:
@@ -11,7 +11,7 @@ pipelines:
           - Xvfb :10 -ac &
           - export DISPLAY=:10
           - mvn --version
-          - mvn clean install
+          - mvn -B verify
           - echo "Generating Allure report...."
           - mvn allure:report
         services:
