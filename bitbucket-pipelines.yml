@@ -1,9 +1,9 @@
-image: maven:3.8.2-jdk-11
+image: markhobson/maven-chrome:jdk-11
 
 pipelines:
   default:
     - step:
-        name: Build and Test And Generate Report
+        name: Build, Test And Generate Report
         caches:
           - maven
         script:
@@ -16,4 +16,4 @@ pipelines:
         services:
           - docker
         artifacts:
-          - ./**/opt/atlassian/pipelines/agent/build/target/site/
+          - ./**/test-results/**/*.xml
