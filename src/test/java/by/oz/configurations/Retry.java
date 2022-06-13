@@ -3,6 +3,7 @@ package by.oz.configurations;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
+//TODO Logging вместо sout
 public class Retry implements IRetryAnalyzer {
 
     private int attempt = 1;
