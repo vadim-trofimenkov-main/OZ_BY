@@ -25,6 +25,7 @@ public class BasketPage extends BasePage {
         return basketResults;
     }
 
+    //TODO скорее всего тебе все эти Step не нужны. Правильней будет делать через allure-cucumber зависимость
     @Step("Check that '{text}' item is in the Basket")
     public void itemShouldBeInTheBasket(String text) {
         log.info("Check that {} item is in the Basket", text);
