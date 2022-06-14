@@ -1,7 +1,6 @@
 package by.oz.pages;
 
 import by.oz.utils.PropertyReader;
-import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.NoSuchElementException;
 import static com.codeborne.selenide.Condition.visible;
@@ -27,19 +26,16 @@ public abstract class BasePage {
         }
     }
 
-    @Step("Open Favourites Page")
     public FavouritesPage clickFavouritesLink() {
         $(favouritesLink).hover().click();
         return new FavouritesPage();
     }
 
-    @Step("Open Basket Page")
     public BasketPage clickBasketLink() {
         $(basketLink).hover().click();
         return new BasketPage();
     }
 
-    @Step("Search for {text} in Search bar")
     public SearchResultPage searchThroughSearchBox(String text) {
         log.info("Searching by text '{}' in search box", text);
         $(searchBox).val(text).pressEnter();

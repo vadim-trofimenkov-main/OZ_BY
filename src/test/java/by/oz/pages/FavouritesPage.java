@@ -2,7 +2,6 @@ package by.oz.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$$;
@@ -20,7 +19,6 @@ public class FavouritesPage extends BasePage {
         return  getFavouritesResults().findBy(text(text));
     }
 
-    @Step("Remove '{text}' item from the Favourites")
     public void removeItemFromFavourites(String text) {
         log.info("Removing '{}' item from the Favourites", text);
         item = getElementFromFavouritesByText(text);
@@ -38,13 +36,11 @@ public class FavouritesPage extends BasePage {
         return favouritesResults.contains(item);
     }
 
-    @Step("'{text}' item should be in the Favourites")
     public void itemShouldExistInFavorites(String text) {
         log.info("Check that '{}' item should be in the Favourites", text);
         item = getElementFromFavouritesByText(text).should(exist);
     }
 
-    @Step("'{text}' item should not be in the Favourites")
     public void itemShouldBeRemovedFromFavorites(String text) {
         log.info("Check that '{}' item should not be in the Favourites", text);
         item = getElementFromFavouritesByText(text).should(exist);

@@ -1,7 +1,6 @@
 Feature: Add and remove item to/from basket
   Add any item to the basket(ex. "JavaScript с нуля") and then remove it from basket.
 
-  #TODO ни один из тестов не запускается через Cucumber. Нужно переработать подход с @BeforeTest java.lang.IllegalStateException: No webdriver is bound to current thread: 1. You need to call open(url) first.
   Scenario: Add found item to basket
     Given User is logged in. Home Page is opened
     And "JavaScript с нуля" is found

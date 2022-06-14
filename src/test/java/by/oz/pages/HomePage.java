@@ -1,6 +1,5 @@
 package by.oz.pages;
 
-import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -18,7 +17,6 @@ public class HomePage extends BasePage {
         return isExist(homePageTitle);
     }
 
-    @Step("Open Home page")
     public HomePage openPage() {
         open("/home");
         homePage = new HomePage();
@@ -27,7 +25,6 @@ public class HomePage extends BasePage {
         } else throw new RuntimeException("Homepage is not opened");
     }
 
-    @Step("Click login button")
     public LoginPage clickLoginButton() {
         $(loginButton).click();
         $(loginPopupElement).shouldBe(visible);
@@ -35,7 +32,6 @@ public class HomePage extends BasePage {
         return loginPage;
     }
 
-    @Step("Check whether user is logged")
     public boolean userShouldBeLogged() {
         return $(loggedUserElement).shouldBe(visible).exists();
     }
