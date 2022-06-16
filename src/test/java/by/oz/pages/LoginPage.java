@@ -1,6 +1,5 @@
 package by.oz.pages;
 
-import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
@@ -18,33 +17,28 @@ public class LoginPage extends BasePage {
         return isExist(loginPopupEmail);
     }
 
-    @Step("Switch to credentials tab")
     public LoginPage switchToCredentialsTab() {
         $(loginPopupEmail).click();
         return this;
     }
 
-    @Step("Enter username: {username}")
     public LoginPage setUsernameField(String username) {
         log.info("Entering username: {}", username);
         $(By.name(loginPopupUsername)).val(username);
         return this;
     }
 
-    @Step("Enter password: {password}")
     public LoginPage setPassword(String password) {
         log.info("Entering password: {}", password);
         $(By.name(loginPopupPassword)).val(password);
         return this;
     }
 
-    @Step("Click Confirm button")
     public HomePage clickConfirmButton() {
         $(loginPopupButton).click();
         return new HomePage();
     }
 
-    @Step("Login as '{username}' user")
     public HomePage logIn(String username, String password) {
         log.info("Logging as user with username: {} and password: {}", username, password);
         LoginPage loginPage = new LoginPage();

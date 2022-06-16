@@ -2,7 +2,6 @@ package by.oz.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
@@ -25,22 +24,18 @@ public class BasketPage extends BasePage {
         return basketResults;
     }
 
-    //TODO скорее всего тебе все эти Step не нужны. Правильней будет делать через allure-cucumber зависимость
-    @Step("Check that '{text}' item is in the Basket")
     public void itemShouldBeInTheBasket(String text) {
         log.info("Check that {} item is in the Basket", text);
         basketResults = getBasketResults();
         basketResults.findBy(text(text)).should(exist);
     }
 
-    @Step("Check that '{text}' item is removed from the Basket")
     public void itemShouldBeRemovedFromBasket(String text) {
         log.info("Check that {} item is removed from the Basket", text);
         basketResults = getBasketResults();
         basketResults.findBy(text(text)).shouldNot(exist);
     }
 
-    @Step("Remove '{text}' item from the Basket")
     public void removeItemFromBasket(String text) {
         log.info("Removing '{}' item from the Basket", text);
         if (!isPageOpened()) throw new RuntimeException("Page is not opened");

@@ -1,9 +1,10 @@
 package by.oz.configurations;
 
+import lombok.extern.log4j.Log4j2;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-//TODO Logging вместо sout
+@Log4j2
 public class Retry implements IRetryAnalyzer {
 
     private int attempt = 1;
@@ -15,7 +16,7 @@ public class Retry implements IRetryAnalyzer {
             if (attempt < MAX_RETRY) {
                 attempt++;
                 iTestResult.setStatus(ITestResult.FAILURE);
-                System.out.println("Retrying once again");
+                log.info("Retrying once again, {} attempt", attempt);
                 return true;
             } else {
                 iTestResult.setStatus(ITestResult.FAILURE);

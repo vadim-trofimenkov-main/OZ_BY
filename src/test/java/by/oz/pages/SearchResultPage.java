@@ -2,7 +2,6 @@ package by.oz.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.NoSuchElementException;
 import static com.codeborne.selenide.Condition.*;
@@ -15,7 +14,6 @@ public class SearchResultPage extends BasePage {
     private SelenideElement searchedElement;
     private String searchText;
 
-    @Step("Select item {element.getText()} from Search results")
     public ItemPage clickElement(SelenideElement element) {
         if (!isPageOpened()) throw new RuntimeException("Search page is not opened");
         log.info("Select item {} from Search results", element.getText());
@@ -29,7 +27,6 @@ public class SearchResultPage extends BasePage {
         return searchResults;
     }
 
-    @Step("Search for item: {text} in search results")
     public SelenideElement getSearchedElementByText(String text) {
         log.info("Select item by text {} from Search results", text);
         searchText = text;
@@ -44,7 +41,6 @@ public class SearchResultPage extends BasePage {
         return searchedElement;
     }
 
-    @Step("Search Item: {searchText} is found")
     public void isItemFound(SelenideElement item, String searchText) {
         item.shouldHave(text(searchText));
     }

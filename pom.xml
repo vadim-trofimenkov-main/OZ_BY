@@ -11,25 +11,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <selenide.version>5.25.0</selenide.version>
-        <testng.version>7.4.0</testng.version>
+        <selenide.version>6.6.3</selenide.version>
+        <testng.version>7.5</testng.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <cucumber.version>4.7.1</cucumber.version>
+        <cucumber.version>7.3.4</cucumber.version>
         <allure-maven.version>2.10.0</allure-maven.version>
-        <allure-testng.version>2.16.0</allure-testng.version>
-        <allure-selenide.version>2.16.0</allure-selenide.version>
         <aspectj.version>1.9.6</aspectj.version>
-        <log4j-core.version>2.14.1</log4j-core.version>
-        <lombok.version>1.18.20</lombok.version>
+        <allure-cucumber7-jvm>2.18.0</allure-cucumber7-jvm>
         <jackson-dataformat-yaml.version>2.12.3</jackson-dataformat-yaml.version>
+        <log4j-core.version>2.17.2</log4j-core.version>
+        <lombok.version>1.18.20</lombok.version>
     </properties>
     <dependencies>
-            <dependency>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-selenide</artifactId>
-                <version>${allure-selenide.version}</version>
-                <scope>test</scope>
-            </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
@@ -74,40 +67,40 @@
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure-testng.version}</version>
-            <scope>test</scope>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>${allure-cucumber7-jvm}</version>
         </dependency>
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
-                <configuration>
-                    <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-                        -Xmx256m
-                        -Dfile.encoding=UTF-8
-                    </argLine>
-                    <suiteXmlFiles>
-                        <file>src/test/resources/regression.xml</file>
-                    </suiteXmlFiles>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                        <scope>runtime</scope>
-                    </dependency>
-                </dependencies>
-            </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.20</version>
+                    <configuration>
+                        <argLine>
+                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                            -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
+                        </argLine>
+                        <suiteXmlFiles>
+                            <file>src/test/resources/regression.xml</file>
+                        </suiteXmlFiles>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjweaver</artifactId>
+                            <version>${aspectj.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>${allure-maven.version}</version>
+                <configuration>
+                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </build>
