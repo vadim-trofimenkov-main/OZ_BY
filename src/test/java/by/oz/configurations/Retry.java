@@ -16,7 +16,7 @@ public class Retry implements IRetryAnalyzer {
             if (attempt < MAX_RETRY) {
                 attempt++;
                 iTestResult.setStatus(ITestResult.FAILURE);
-                log.info("Retrying once again");
+                log.info("Retrying once again, {} attempt", attempt);
                 return true;
             } else {
                 iTestResult.setStatus(ITestResult.FAILURE);

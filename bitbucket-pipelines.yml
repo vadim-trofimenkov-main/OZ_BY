@@ -9,9 +9,9 @@ pipelines:
         script:
           - echo "Running the automated tests...."
           - mvn --version
-          - mvn clean test -Dmaven.test.failure.ignore=true
+          - mvn clean test
         artifacts:
-          - target/**
+          - target/allure-results
           - build/**
     - step:
         name: Allure report
@@ -20,4 +20,4 @@ pipelines:
           - echo "Generating Allure report...."
           - mvn allure:report
         artifacts:
-          - target/**
+          - target/site/allure-maven-plugin/index.html
